@@ -2,6 +2,7 @@ connection: "localmariadb_testdb"
 
 # include all the views
 include: "*.view"
+include: "*.dashboard.lookml"
 
 datagroup: testdb_local_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;

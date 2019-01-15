@@ -7,7 +7,7 @@ view: order_items {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: order_id {
+  dimension: order_num {
     type: number
     sql: ${TABLE}.order_id ;;
   }
@@ -17,6 +17,11 @@ view: order_items {
     sql: ${TABLE}.shipping ;;
   }
 
+  dimension: shipping2 {
+    type: number
+    sql: ${shipping} ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [id]
@@ -24,7 +29,13 @@ view: order_items {
 
   measure: order_shipping_amt {
     type: sum_distinct
-    sql_distinct_key: ${order_id} ;;
+    sql_distinct_key: ${order_num} ;;
     sql: ${shipping} ;;
   }
+
+  dimension: delete_me {
+    type: string
+    sql: ${id} ;;
+  }
+
 }
